@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../HTML"
+		},
+		{
+			"path": "../studio"
+		},
+		{
+			"path": "../../Users/User/Desktop/3장-13장/5. AI기반 워크플로우/5. AI기반 워크플로우"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "studio"
+	}
+}
