@@ -3,118 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>UI/UX 검증 및 최적화</title>
+<title>동네배움터</title>
 <style>
-:root{--navy:#233f70;--blue:#1769ff;--bg:#f0f3f8;--line:#dce2ea;--text:#172033;--muted:#596579;--green:#087b52}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans KR",sans-serif}
-main{width:min(1380px,calc(100% - 40px));margin:40px auto}
-.hero,.panel{border-radius:16px;box-shadow:0 6px 18px #20304814}
-.hero{display:flex;justify-content:space-between;gap:30px;padding:34px;background:var(--navy);color:white}
-.hero h1{margin:16px 0 8px;font-size:34px}
-.hero p{margin:0;color:#d8e1f0}
-.hero aside{width:290px;padding:20px;border-radius:12px;background:#ffffff14;display:grid;gap:10px}
-.pill{display:inline-block;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:bold}
-.blue{background:var(--blue)}.red{background:#ffe0dd;color:#a9362e}.green{background:#dff7ec;color:var(--green)}
-.panel{margin-top:24px;padding:26px;background:white}
-.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}
-.head span{font-size:12px;color:var(--blue)}
-h2{margin:5px 0 0;font-size:24px}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}
-table{width:100%;min-width:760px;border-collapse:collapse;text-align:left}
-th,td{padding:15px 18px;border-bottom:1px solid var(--line);font-size:14px}
-thead{background:#f7f8fa;color:var(--muted)}
-.status{padding:5px 9px;border-radius:99px;font-size:11px;font-weight:bold}
-.warn{background:#fff0e6;color:#ad4d19}.pass{background:#dff7ec;color:var(--green)}
-.grid,.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.issue{padding:18px;border-radius:12px;background:#fff0ef}
-.issue>b{color:#b33b31}.issue strong{color:var(--green)}
-.issue p,.reason p{color:var(--muted);font-size:13px;line-height:1.6}
-.compare{grid-template-columns:1fr 1fr}
-.product{margin-top:10px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#f8fafc}
-.product.after{border:2px solid var(--blue)}
-.row{display:flex;align-items:center;justify-content:space-between}
-.product button{min-width:32px;min-height:32px;border:0;border-radius:99px}
-.after button{min-width:44px;min-height:44px;background:white;border:1px solid var(--blue);color:var(--blue)}
-.lamp{height:155px;margin:12px 0;border-radius:8px;background:linear-gradient(110deg,#8e7a62,#cbb28a,#a08a70);position:relative}
-.lamp:after{content:"";position:absolute;left:50%;top:22px;width:85px;height:105px;transform:translateX(-50%);background:#d9bd89;clip-path:polygon(15% 0,85% 0,100% 35%,60% 35%,60% 45%,72% 100%,28% 100%,40% 45%,40% 35%,0 35%)}
-.product small{font-size:12px;color:#8791a2}.after small{font-size:14px;color:#4c596d}
-.reason{padding:18px;border-radius:12px;background:#edf4ff}
-.reason i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:white;font-style:normal}
-footer{margin-top:16px;padding:14px;border-radius:9px;background:var(--navy);color:white;text-align:center;font-weight:bold}
-@media(max-width:820px){main{width:calc(100% - 24px);margin:20px auto}.hero{display:block}.hero aside{width:100%;margin-top:20px}.grid,.compare{grid-template-columns:1fr}.panel{padding:20px}}
+body{margin:0;background:#f7f9f6;color:#151b18;font-family:Arial,"Noto Sans KR",sans-serif}
+header{height:68px;background:#fff;border-bottom:1px solid #eee}
+.wrap{width:min(1240px,calc(100% - 48px));margin:auto}
+header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{color:#087a55;font-size:20px;font-weight:900}
+nav{display:flex;gap:36px}
+nav a{color:#737b76;text-decoration:none;font-size:14px}
+nav a:first-child{color:#087a55;font-weight:bold}
+main{padding:55px 0 80px}
+.eyebrow{color:#087a55;font-size:14px;font-weight:bold}
+h1{margin:12px 0 30px;font-size:42px}
+.search{height:58px;display:flex;align-items:center;padding:0 18px;border:2px solid #087a55;border-radius:10px;background:#fff}
+.search input{width:100%;border:0;outline:0;font-size:16px}
+.chips{display:flex;gap:10px;margin:24px 0 38px}
+.chip{padding:11px 18px;border:1px solid #dfe5e1;border-radius:99px;background:#fff;font-weight:bold}
+.chip.active{background:#087a55;color:#fff;border-color:#087a55}
+.heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+h2{font-size:20px}
+.sort{color:#777;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{overflow:hidden;background:#fff;border-radius:16px;box-shadow:0 10px 24px #1f312717}
+.card img{width:100%;height:194px;object-fit:cover}
+.content{padding:18px}
+.category{color:#087a55;font-size:12px;font-weight:bold}
+h3{margin:8px 0 10px;font-size:18px}
+.meta{color:#737b76;font-size:13px}
+.price{font-size:18px;font-weight:900}
+@media(max-width:800px){.cards{grid-template-columns:1fr}.wrap{width:calc(100% - 28px)}nav a:not(:first-child){display:none}h1{font-size:32px}}
 </style>
 </head>
 <body>
-<main>
-<header class="hero">
-  <div>
-    <span class="pill blue">PART 03 · HUMAN-IN-THE-LOOP</span>
-    <h1>UI/UX 검증 및 최적화</h1>
-    <p>AI 생성 시안을 사용성·접근성 기준으로 점검하고 사람의 판단으로 개선한 결과 보고서</p>
+
+<header>
+  <div class="wrap">
+    <div class="logo">동네배움터</div>
+    <nav>
+      <a href="#">클래스 찾기</a>
+      <a href="#">클래스 열기</a>
+      <a href="#">마이페이지</a>
+    </nav>
   </div>
-  <aside><small>UI/UX PRACTICE · 100 MIN</small><b>사용성 점검 · 가이드라인 검증 · AI 결과물 수정</b></aside>
 </header>
 
-<section class="panel">
-  <div class="head"><div><span>01 · USABILITY CHECK</span><h2>사용성 체크리스트</h2></div><b>6개 항목 중 3개 개선 필요</b></div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>점검 항목</th><th>점검 결과</th><th>판정</th><th>조치</th></tr></thead>
-    <tbody>
-      <tr><th>가독성</th><td>본문 14px, 보조 문구 대비 부족</td><td><span class="status warn">개선 필요</span></td><td>텍스트 크기·명도 조정</td></tr>
-      <tr><th>터치 영역</th><td>아이콘 버튼 32×32px로 기준 미달</td><td><span class="status warn">개선 필요</span></td><td>최소 44×44px 확보</td></tr>
-      <tr><th>정보 위계</th><td>제목·가격·CTA 우선순위가 명확함</td><td><span class="status pass">통과</span></td><td>현재 구조 유지</td></tr>
-      <tr><th>일관성</th><td>카드 간격과 모서리 값이 일관됨</td><td><span class="status pass">통과</span></td><td>8pt 간격 체계 유지</td></tr>
-      <tr><th>피드백</th><td>선택 상태가 색상에만 의존함</td><td><span class="status warn">개선 필요</span></td><td>체크 아이콘·테두리 추가</td></tr>
-      <tr><th>오류 예방</th><td>삭제 동작에 확인 단계가 제공됨</td><td><span class="status pass">통과</span></td><td>확인 문구 구체화</td></tr>
-    </tbody>
-  </table></div>
-</section>
+<main class="wrap">
+  <p class="eyebrow">내 주변에서 가볍게 시작해요</p>
+  <h1>오늘은 무엇을 배워볼까요?</h1>
 
-<section class="panel">
-  <div class="head"><div><span>02 · ACCESSIBILITY</span><h2>웹 접근성 문제 식별표</h2></div></div>
-  <div class="grid">
-    <article class="issue"><b>A-01</b><h3>색상 대비 · 2.7:1</h3><p>WCAG AA 4.5:1 미달</p><strong>→ 5.1:1로 상향</strong></article>
-    <article class="issue"><b>A-02</b><h3>설명 문구 · 12px</h3><p>모바일 환경에서 판독 어려움</p><strong>→ 최소 14px로 확대</strong></article>
-    <article class="issue"><b>A-03</b><h3>상품 이미지 alt 누락</h3><p>스크린리더가 내용을 설명하지 못함</p><strong>→ 대체텍스트 제공</strong></article>
+  <label class="search">
+    🔍&nbsp;
+    <input type="search" placeholder="클래스명이나 동네를 검색해 보세요" aria-label="클래스 검색">
+  </label>
+
+  <div class="chips">
+    <button class="chip active">전체</button>
+    <button class="chip">요리</button>
+    <button class="chip">공예</button>
+    <button class="chip">플라워</button>
+    <button class="chip">건강</button>
   </div>
-</section>
 
-<section class="panel">
-  <div class="head"><div><span>03 · REVISION</span><h2>수정 전 / 수정 후 화면 비교</h2></div></div>
-  <div class="compare">
-    <article>
-      <span class="pill red">BEFORE · AI 원본</span>
-      <div class="product">
-        <div class="row"><b>Morrow</b><button aria-label="장바구니">▣</button></div>
-        <div class="lamp"></div>
-        <small>LIGHTING · NEW COLLECTION</small>
-        <h3>Arc ceramic lamp</h3>
-        <div class="row"><b>₩129,000</b><button>Ivory</button></div>
+  <div class="heading">
+    <h2>우리 동네 인기 클래스 12개</h2>
+    <span class="sort">가까운 순⌄</span>
+  </div>
+
+  <section class="cards">
+    <article class="card">
+      <img
+        src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85"
+        alt="진열대에 놓인 갓 구운 빵">
+      <div class="content">
+        <span class="category">베이킹</span>
+        <h3>우리 동네 천연 발효빵 만들기</h3>
+        <p class="meta">도보 8분 · 매주 토요일 10:00</p>
+        <strong class="price">38,000원</strong>
       </div>
     </article>
-    <article>
-      <span class="pill green">AFTER · HITL 수정</span>
-      <div class="product after">
-        <div class="row"><b>Morrow</b><button aria-label="장바구니에 담기">▣</button></div>
-        <div class="lamp" role="img" aria-label="아이보리 세라믹 테이블 램프"></div>
-        <small>LIGHTING · NEW COLLECTION</small>
-        <h3>Arc ceramic lamp</h3>
-        <div class="row"><b>₩129,000</b><button aria-pressed="true">✓ Ivory</button></div>
+
+    <article class="card">
+      <img
+        src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=85"
+        alt="작업대에서 라탄 공예를 하는 모습">
+      <div class="content">
+        <span class="category">공예</span>
+        <h3>초보자를 위한 라탄 바구니</h3>
+        <p class="meta">도보 12분 · 매주 금요일 19:30</p>
+        <strong class="price">32,000원</strong>
       </div>
     </article>
-  </div>
-</section>
 
-<section class="panel">
-  <div class="head"><div><span>04 · HUMAN JUDGMENT</span><h2>AI 원본을 그대로 채택하지 않은 이유</h2></div></div>
-  <div class="grid">
-    <article class="reason"><i>01</i><h3>보조 텍스트 대비·크기</h3><p>모바일 판독성과 WCAG 기준을 우선해 14px·5.1:1 대비를 적용했다.</p></article>
-    <article class="reason"><i>02</i><h3>터치 영역 확대</h3><p>오조작 위험을 줄이기 위해 조작 영역을 44×44px로 확대했다.</p></article>
-    <article class="reason"><i>03</i><h3>선택 상태 다중 표현</h3><p>색상 외에 체크 아이콘과 테두리를 함께 적용했다.</p></article>
-  </div>
-  <footer>HITL 결론 · 실제 사용자 맥락과 접근성 기준은 인간이 최종 검증한다.</footer>
-</section>
+    <article class="card">
+      <img
+        src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85"
+        alt="다양한 가을꽃으로 만든 꽃꽂이">
+      <div class="content">
+        <span class="category">플라워</span>
+        <h3>가을꽃으로 만드는 작은 정원</h3>
+        <p class="meta">도보 15분 · 매주 토요일 11:00</p>
+        <strong class="price">45,000원</strong>
+      </div>
+    </article>
+  </section>
 </main>
+
+<script>
+document.querySelectorAll(".chip").forEach(button=>{
+  button.onclick=()=>{
+    document.querySelectorAll(".chip").forEach(item=>item.classList.remove("active"));
+    button.classList.add("active");
+  };
+});
+</script>
 </body>
 </html>
